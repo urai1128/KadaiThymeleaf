@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{input.heading_ja}">Thymeleaf課題</title>
+</head>
+<body>
+    <h1 th:text="#{input.heading_ja}">Thymeleaf課題</h1>
+    <h2 th:text="#{input.subheading_ja}">入力画面</h2>
+
+    <!-- 前回値がある場合だけ表示 -->
+    <div th:if="${previous != null}">
+        <p th:text="#{output.previous(${previous})}">前回入力された値は「xxx」でした。</p>
+    </div>
+
+    <p th:text="#{input.label_ja}">値を入力してください。</p>
+    <form method="post" action="/output">
+        <input type="text" name="val" th:value="${previous}">
+        <button type="submit" th:text="#{input.button_ja}">送信</button>
+    </form>
+</body>
+</html>
+
